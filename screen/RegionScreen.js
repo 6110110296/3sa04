@@ -26,8 +26,8 @@ const RegionItem = ({region, navigation}) => (
 export default function RegionScreen(){
     const navigation = useNavigation()
     return(
-        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
-            <Image source={require('../sun.png')} style={styles.img}/>
+        <ImageBackground source={require('../image/bg.jpg')} style={styles.backdrop}>
+            <Image source={require('../image/logo.png')} style={styles.img}/>
             <FlatList
                 data = {availableRegionItems}
                 keyExtractor = {item => item.code}
