@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, View, StatusBar, Text, StyleSheet, Button } from 'react-native'
+import { FlatList, View, StatusBar, Text, StyleSheet, Button, ImageBackground, Image } from 'react-native'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 
@@ -26,20 +26,31 @@ const RegionItem = ({region, navigation}) => (
 export default function RegionScreen(){
     const navigation = useNavigation()
     return(
-        <View>
+        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
+            <Image source={require('../sun.png')} style={styles.img}/>
             <FlatList
                 data = {availableRegionItems}
                 keyExtractor = {item => item.code}
                 renderItem = {({item}) => <RegionItem {...item} navigation={navigation}/>}
             />
             <StatusBar style="auto" />
-        </View>
+        </ImageBackground>
     )
 }
 
 const styles = StyleSheet.create({
     zipItem: {
-        flex: 1,  
         margin: 10,
+    },
+    img: {
+        width: '60%',
+        height: '25%'
+    },
+    backdrop: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%'
     },
 })

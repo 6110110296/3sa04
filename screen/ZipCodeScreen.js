@@ -3,7 +3,6 @@ import { FlatList, View, StatusBar, Text, StyleSheet, Button } from 'react-nativ
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 
-
 const northZipItems=[
     {place:'เชียงใหม่',code:'50000'},
     {place:'เชียงราย',code:'57000'},
