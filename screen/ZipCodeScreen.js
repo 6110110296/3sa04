@@ -3,7 +3,28 @@ import { FlatList, View, StatusBar, Text, StyleSheet, Button } from 'react-nativ
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 
-const availableZipItems=[
+
+const northZipItems=[
+    {place:'เชียงใหม่',code:'50000'},
+    {place:'เชียงราย',code:'57000'},
+    {place:'ลำปาง',code:'52000'},
+    {place:'ลำพูน',code:'51000'},
+    {place:'แม่ฮ่องสอน',code:'58000'},
+    {place:'น่าน',code:'55000'},
+    {place:'พะเยา',code:'56000'},
+    {place:'แพร่',code:'54000'},
+    {place:'อุตรดิตถ์',code:'53000'},
+]
+
+const bkkZipItems=[
+    {place:'บางบอน',code:'10150'},
+    {place:'บางกะปิ',code:'10240'},
+    {place:'บางแค',code:'10160'},
+    {place:'บางเขน',code:'10220'},
+    {place:'บางคอแหลม',code:'10120'},
+]
+
+const southZipItems=[
     {place:'หาดใหญ่',code:'90110'},
     {place:'ตรัง',code:'92000'},
     {place:'กระบี่',code:'81000'},
@@ -31,12 +52,24 @@ const ZipItem = ({place, code, navigation}) => (
     </TouchableHighlight>
 )
 
-export default function ZipCodeScreen(){
+export default function ZipCodeScreen({route}){
     const navigation = useNavigation()
+    var data
+    var region = route.params.region
+    if(region == "Bkk"){
+        data = bkkZipItems
+    }
+    else if(region == "North"){
+        data = northZipItems
+    }
+    else if(region == "South"){
+        data = southZipItems
+    }
+
     return(
         <View>
             <FlatList
-                data = {availableZipItems}
+                data = {data}
                 keyExtractor = {item => item.code}
                 renderItem = {({item}) => <ZipItem {...item} navigation={navigation}/>}
             />
