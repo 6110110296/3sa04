@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     backdrop: {
+        flexDirection: 'column',
         width: '100%',
         height: '100%'
-    }
+    },
 })
